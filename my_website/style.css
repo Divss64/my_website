@@ -1,0 +1,722 @@
+/* Universal Box-Sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Body and Global Background */
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: linear-gradient(
+        to bottom,
+        #040b2d 0%,
+        #061139 30%,
+        #0a1745 70%,
+        #0c1c50 100%
+    );
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    position: relative;
+    z-index: 0;
+}
+
+/* Radial gradient overlay at the top of the body */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: radial-gradient(ellipse at top, rgba(255,255,255,0.1), transparent);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.navbar,
+.hero,
+.hero-buttons,
+.profile-photo,
+.photo-section,
+.skills-section,
+.skill-icons span,
+#mem {
+    z-index: 10;
+    position: relative;
+}
+
+.background-lines,
+.container {
+    z-index: -10;
+    opacity: 0.3;
+}
+
+/* The global container (if used for background elements) */
+.container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 3rem;
+    background: rgba(0, 0, 0, 0.4);
+    position: relative;
+    z-index: 100;
+    flex-wrap: wrap;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+    color: #6c63ff;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 4rem 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.creative {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    font-family: 'Josefin Sans', sans-serif;
+    color: white;
+    margin-top: 2rem;
+}
+
+.tag.green {
+    display: inline-block;
+    background: #1ec28b;
+    color: black;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 20px;
+    padding: 0.3rem 1rem;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+}
+
+#mem {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 1.5rem;
+    color: #dcdcdc;
+    text-align: center;
+    max-width: 800px;
+    margin: 1rem auto;
+    line-height: 1.6;
+}
+
+.hero-buttons {
+    margin-top: 2rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.primary-btn {
+    padding: 0.8rem 1.6rem;
+    border-radius: 10px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    border: none;
+    margin: 0;
+    cursor: pointer;
+    background: #3f4fff;
+    color: white;
+    box-shadow: 0 0 10px #3f4fff, 0 0 20px #3f4fff77;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.primary-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px #3f4fff, 0 0 30px #3f4fffaa;
+}
+
+.resume-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    flex-direction: column;
+}
+
+.resume-image {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+    box-shadow: 0 0 20px white;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.photo-section {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+    z-index: 1;
+}
+
+.photo-section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.profile-photo {
+    width: 250px;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.skills-section {
+    padding: 60px 20px;
+    background-color: #0d0d20;
+    text-align: center;
+    position: relative;
+    z-index: 5;
+    padding-top: 80px;
+    overflow: hidden;
+}
+
+.skills-heading {
+    font-size: 3rem;
+    font-weight: 900;
+    font-family: 'Josefin Sans', sans-serif;
+    color: white;
+    margin-bottom: 80px;
+    letter-spacing: 1.5px;
+}
+
+.insight-card.large-card.about-card {
+    background: linear-gradient(to bottom right, #0f162c, #101a35);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.skill-icons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.skill-icons span {
+    width: 100px;
+    height: 100px;
+    background-color: #1c1c2b;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.skill-icons span:hover {
+    transform: translateY(-5px) scale(1.05);
+    background-color: #2a2a3d;
+}
+
+.skill-icons img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 8px;
+    object-fit: contain;
+}
+
+/* Background container for fading diagonal lines */
+.background-lines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* Common styles for each diagonal stripe */
+.diagonal {
+    position: absolute;
+    width: 130%;
+    height: 20px;
+    opacity:0.3;
+    transform: rotate(45deg);
+    animation: fade 2s ease-in-out infinite alternate;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    left: 17%;
+}
+
+/* Individual stripe colors */
+.red {
+    background: #e97e9e;
+    animation-delay: 0s;
+}
+
+.white {
+    background: #ffffff;
+    animation-delay: 0.5s;
+}
+
+.blue {
+    background: #29a9ff;
+    animation-delay: 1s;
+}
+
+/* Positioning diagonals */
+.diagonal.red { top: 30%; }
+.diagonal.white { top: 40%; }
+.diagonal.blue { top: 50%; }
+
+/* Opposite Diagonals */
+.reverse {
+    transform: rotate(-45deg);
+    left: -25%;
+}
+
+.red.reverse { top: 30%; }
+.white.reverse { top: 40%; }
+.blue.reverse { top: 50%; }
+
+/* Fade animation */
+@keyframes fade {
+    0% { opacity: 0.1; }
+    100% { opacity: 0.4; }
+}
+
+.main-content {
+    position: relative;
+    z-index: 1;
+}
+
+.insight-layout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0f0f1c;
+    padding: 40px 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 50px;
+    position: relative;
+    z-index: 5;
+    overflow: hidden;
+}
+
+/* This class now specifically targets containers for diagonals within sections */
+.section-diagonals {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.insight-card {
+    background-color: #0e0e2c;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    transform: scale(0.95);
+    transform: translateY(50px);
+    transition: all 0.6s ease-in-out;
+    will-change: transform, opacity;
+}
+
+.insight-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.insight-card.large-card {
+    background-color: #0f0f1c;
+    color: #ffffff;
+    padding: 25px 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    gap: 60px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: 1;
+    position: relative;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.insight-card.large-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15);
+}
+
+.card-caption {
+    flex: 2.5;
+    font-size: 18px;
+    line-height: 1.6;
+    height: auto;
+    background: none;
+    padding: 0;
+    text-align: left;
+    min-width: 300px;
+}
+
+.card-caption strong {
+    display: block;
+    font-size: 40px;
+    font-family: 'Josefin Sans', sans-serif;
+    margin-bottom: 15px;
+    color: #ffffff;
+    text-align: center;
+}
+
+.list {
+    list-style-type: disc;
+    padding-left: 30px;
+}
+
+.list li {
+    margin-bottom: 10px;
+    font-size: 27px;
+}
+
+.school-images {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 0;
+    padding-right: 0;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    will-change: opacity, transform;
+    height: 100%;
+    min-width: 150px;
+}
+
+.edu-img {
+    width: 120px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    position: static;
+    transform: none;
+    transition: transform 0.4s ease, z-index 0.3s;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.edu-img:hover {
+    transform: scale(1.1);
+    z-index: 10;
+}
+
+.school-img,
+.college-img {
+    position: static;
+    top: auto;
+    right: auto;
+    transform: none;
+    z-index: auto;
+}
+
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    will-change: opacity, transform;
+}
+
+.scroll-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.insight-card.full-width-card {
+    max-width: 1200px;
+    width: 100%;
+    display: block;
+}
+
+.insight-card.full-width-card .card-caption {
+    flex: none;
+    text-align: left;
+    padding: 0;
+}
+
+.insight-card.full-width-card .card-caption strong {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.insight-card.full-width-card .list {
+    padding-left: 30px;
+    text-align: left;
+}
+
+.insight-card.full-width-card .list li {
+    font-size: 23px;
+}
+
+#preview-img {
+    display: block;
+    margin: 2rem auto 0 auto;
+    width: 700px;
+    max-width: 100%;
+    height: 400px;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease, scale 0.4s ease;
+}
+
+#preview-img.scroll-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#preview-img:hover {
+    transform: scale(1.03);
+    z-index: 5;
+}
+
+.poster-gallery {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 2rem;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.poster-gallery.scroll-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.poster-gallery .poster-img {
+    width: 250px !important;
+    height: 100px !important;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease;
+    max-width: 48%;
+    height: auto !important;
+}
+
+.poster-gallery .poster-img:hover {
+    transform: scale(1.05);
+}
+.poster-img {
+    width: 180px;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    transition: transform 0.4s ease;
+    flex-shrink: 0;
+}
+
+
+#pro {
+    width: 400px;
+    height: 400px;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 1rem 1.5rem;
+    }
+    .logo {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 0.5rem;
+    }
+    .nav-links {
+        justify-content: center;
+        width: 100%;
+        gap: 1rem;
+    }
+    .creative {
+        font-size: 3rem;
+    }
+    #mem {
+        font-size: 1.2rem;
+    }
+    .skills-heading {
+        font-size: 2.8rem;
+    }
+    .insight-card.large-card {
+        padding: 20px;
+    }
+    .card-caption strong {
+        font-size: 35px;
+    }
+    .list li {
+        font-size: 22px;
+    }
+    .primary-btn {
+        font-size: 1.2rem;
+        padding: 0.7rem 1.4rem;
+    }
+    .profile-photo {
+        width: 220px;
+    }
+    .skill-icons span {
+        width: 90px;
+        height: 90px;
+        font-size: 0.9rem;
+    }
+    .skill-icons img {
+        width: 35px;
+        height: 35px;
+    }
+    .poster-gallery .poster-img {
+        width: 45% !important;
+        height: auto !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 1rem 0.5rem;
+    }
+    .nav-links {
+        gap: 0.5rem;
+        font-size: 0.85rem;
+    }
+    .creative {
+        font-size: 2.5rem;
+    }
+    #mem {
+        font-size: 1rem;
+    }
+    .primary-btn {
+        font-size: 1rem;
+        padding: 0.6rem 1.2rem;
+    }
+    .skills-heading {
+        font-size: 2.2rem;
+        margin-bottom: 50px;
+    }
+    .profile-photo {
+        width: 180px;
+    }
+    .skill-icons span {
+        width: 80px;
+        height: 80px;
+        font-size: 0.8rem;
+    }
+    .skill-icons img {
+        width: 30px;
+        height: 30px;
+    }
+    .insight-card.large-card {
+        padding: 10px;
+        gap: 20px;
+    }
+    .card-caption strong {
+        font-size: 30px;
+    }
+    .list li {
+        font-size: 18px;
+    }
+    .edu-img {
+        width: 100px;
+    }
+    #preview-img {
+        max-height: 200px;
+    }
+    .poster-gallery .poster-img {
+        width: 90% !important;
+        max-width: 250px;
+        height: auto !important;
+    }
+}
+
+/* Link styles */
+.card-caption a {
+    color: #4ea6ff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.card-caption a:hover {
+    color: #6c63ff;
+    text-decoration: underline;
+}
